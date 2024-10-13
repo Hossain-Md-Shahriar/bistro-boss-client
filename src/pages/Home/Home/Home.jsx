@@ -1,7 +1,11 @@
+import Banner from "../Banner/Banner";
+import Category from "../Category/Category";
+
 const Home = () => {
   return (
-    <div className="text-xl">
-      <button className="btn">hello</button>
+    <div>
+      <Banner />
+      <Category />
     </div>
   );
 };
