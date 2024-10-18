@@ -16,7 +16,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const from = location?.state || "/";
   useEffect(() => {
-    loadCaptchaEnginge(3);
+    loadCaptchaEnginge(2);
   }, []);
 
   const handleValidateCaptcha = (e) => {

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const { cart } = useCart();
   const handleLogOut = async () => {
     try {
       await logOut();
@@ -20,6 +23,14 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/order/salad">Order Food</Link>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="flex items-center gap-px">
+            <MdOutlineShoppingCart />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </Link>
       </li>
       {user ? (
         <li>
