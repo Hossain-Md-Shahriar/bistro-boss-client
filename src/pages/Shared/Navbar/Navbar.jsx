@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const navOptions = (
     <>
       <li>
@@ -12,6 +21,15 @@ const Navbar = () => {
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
+      {user ? (
+        <li>
+          <button onClick={handleLogOut}>Logout</button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
