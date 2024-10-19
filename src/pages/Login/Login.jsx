@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -116,15 +117,18 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-              <p>
-                <small>
-                  New Here?{" "}
-                  <Link to="/signup" className="text-blue-600">
-                    Create an account
-                  </Link>
-                </small>
-              </p>
             </form>
+            <div className="px-8">
+              <SocialLogin />
+            </div>
+            <p className="px-8 pb-8">
+              <small>
+                New Here?{" "}
+                <Link to="/signup" className="text-blue-600">
+                  Create an account
+                </Link>
+              </small>
+            </p>
           </div>
         </div>
       </div>

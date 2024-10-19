@@ -2,8 +2,12 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -13,10 +17,18 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const result = await createUser(data.email, data.password);
       console.log(result.user);
+      const userInfo = { name: data.name, email: data.email };
+      const res = await axiosPublic.post("/users", userInfo);
+      console.log("user added to database", res.data);
+      Swal.fire({
+        icon: "success",
+        title: "User Created Successfully.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch (err) {
       console.log(err.message);
@@ -112,7 +124,11 @@ const SignUp = () => {
                   value="Sign Up"
                 />
               </div>
-              <p>
+            </form>
+              <div className="px-8">
+                <SocialLogin />
+              </div>
+              <p className="px-8 pb-8">
                 <small>
                   Already have an account?{" "}
                   <Link to="/login" className="text-blue-600">
@@ -120,7 +136,6 @@ const SignUp = () => {
                   </Link>
                 </small>
               </p>
-            </form>
           </div>
         </div>
       </div>

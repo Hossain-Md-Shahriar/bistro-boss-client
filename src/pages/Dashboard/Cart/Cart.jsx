@@ -48,7 +48,6 @@ const Cart = () => {
               <th>Item</th>
               <th>Item Price</th>
               <th>Action</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -70,14 +69,14 @@ const Cart = () => {
                 <td>
                   <span>${item.price}</span>
                 </td>
-                <th>
+                <td>
                   <button
                     onClick={() => handleDelete(item._id)}
                     className="btn btn-ghost text-2xl text-red-500"
                   >
                     <MdDelete />
                   </button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>
