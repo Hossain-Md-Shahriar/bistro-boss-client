@@ -125,17 +125,17 @@ const SignUp = () => {
                 />
               </div>
             </form>
-              <div className="px-8">
-                <SocialLogin />
-              </div>
-              <p className="px-8 pb-8">
-                <small>
-                  Already have an account?{" "}
-                  <Link to="/login" className="text-blue-600">
-                    Login
-                  </Link>
-                </small>
-              </p>
+            <div className="px-8">
+              <SocialLogin />
+            </div>
+            <p className="px-8 pb-8">
+              <small>
+                Already have an account?{" "}
+                <Link to="/login" className="text-blue-600">
+                  Login
+                </Link>
+              </small>
+            </p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
 
   if (loading || isAdminLoading) return <p>Loading...</p>;
   if (user && isAdmin) return children;
-  return <Navigate to="/login" state={location.pathname} replace={true} />;
+  return <Navigate to="/" state={location.pathname} replace={true} />;
 };
 
 export default AdminRoute;
