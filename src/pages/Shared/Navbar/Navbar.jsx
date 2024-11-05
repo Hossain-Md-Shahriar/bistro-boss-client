@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
   const { cart } = useCart();
   const handleLogOut = async () => {
     try {
@@ -24,6 +26,12 @@ const Navbar = () => {
       <li>
         <Link to="/order/salad">Order Food</Link>
       </li>
+      {user && isAdmin && (<li>
+        <Link to="/dashboard/admin-home">Dashboard</Link>
+      </li>)}
+      {user && !isAdmin && (<li>
+        <Link to="/dashboard/user-home">Dashboard</Link>
+      </li>)}
       <li>
         <Link to="/dashboard/cart">
           <button className="flex items-center gap-px">
